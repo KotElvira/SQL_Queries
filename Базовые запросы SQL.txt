@@ -16,16 +16,20 @@ FROM
 ORDER BY
   name
  ----------------------------------------------------------- 
-  SELECT 
-courier_id,
+SELECT 
+  courier_id,
 DATE_PART('year', birth_date) AS birth_year
 FROM
-couriers
-ORDER BY birth_year DESC, courier_id
+  couriers
+ORDER BY 
+  birth_year DESC, 
+  courier_id
  ----------------------------------------------------------- 
 SELECT 
-courier_id,
+  courier_id,
 COALESCE(DATE_PART('year', birth_date)::VARCHAR, 'unknown') AS birth_year
 FROM
-couriers
-ORDER BY birth_year DESC, courier_id
+  couriers
+ORDER BY 
+  birth_year DESC, 
+  courier_id

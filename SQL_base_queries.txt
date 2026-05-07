@@ -33,3 +33,40 @@ FROM
 ORDER BY 
   birth_year DESC, 
   courier_id
+-----------------------------------------------------------
+SELECT
+  product_id,
+  name,
+  price AS old_price,
+  ROUND(price * 1.05, 1) AS new_price
+FROM
+  products
+ORDER BY
+  new_price DESC,
+  product_id
+  -----------------------------------------------------------
+  SELECT
+  product_id,
+  name,
+  price AS old_price,
+  CASE
+    WHEN name != 'икра' AND price > 100 THEN price * 1.05
+    ELSE price
+  END AS new_price
+FROM
+  products
+ORDER BY
+  new_price DESC,
+  product_id
+  -----------------------------------------------------------
+  SELECT
+  product_id,
+  name,
+  price,
+  ROUND(price/1.2*0.2, 2) AS tax,
+  ROUND(price-price/1.2*0.2, 2) AS price_before_tax
+FROM
+  products
+ORDER BY
+  price_before_tax DESC,
+  product_id

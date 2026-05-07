@@ -45,7 +45,7 @@ ORDER BY
   new_price DESC,
   product_id
   -----------------------------------------------------------
-  SELECT
+SELECT
   product_id,
   name,
   price AS old_price,
@@ -59,7 +59,7 @@ ORDER BY
   new_price DESC,
   product_id
   -----------------------------------------------------------
-  SELECT
+SELECT
   product_id,
   name,
   price,

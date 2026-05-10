@@ -1,0 +1,72 @@
+SELECT
+  product_id,
+  name,
+  price
+FROM
+  products
+WHERE
+  price <= 100
+ORDER BY
+  product_id;
+-----------------------------------------------------------
+SELECT
+  user_id,
+  order_id,
+  time
+FROM
+  user_actions
+WHERE
+  time > '2022-09-06'
+  AND action = 'create_order'
+ORDER BY
+  order_id;
+-----------------------------------------------------------
+SELECT
+  product_id,
+  name,
+  price AS old_price,
+  price * 0.8 AS new_price
+FROM
+  products
+WHERE
+  price * 0.8 > 100
+ORDER BY
+  product_id;
+  -----------------------------------------------------------
+SELECT
+  product_id,
+  name
+FROM
+  products
+WHERE
+  name LIKE 'чай %'
+  OR name LIKE '_____'
+ORDER BY
+  product_id;
+  -----------------------------------------------------------
+SELECT
+  product_id,
+  name
+FROM
+  products
+WHERE
+  name LIKE 'с%'
+  AND name NOT LIKE '% %'
+ORDER BY
+  product_id;
+  
+SELECT
+  product_id,
+  name,
+  price,
+  '25%' AS discount,
+  price * 0.75 AS new_price
+FROM
+  products
+WHERE
+  price > 60
+  AND name ILIKE 'чай%'
+  AND name NOT LIKE '%гриб%'
+ORDER BY
+  product_id;
+  -----------------------------------------------------------

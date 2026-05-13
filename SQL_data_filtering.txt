@@ -70,3 +70,105 @@ WHERE
 ORDER BY
   product_id;
   -----------------------------------------------------------
+SELECT
+  user_id,
+  order_id,
+  action,
+  time
+FROM
+  user_actions
+WHERE
+  user_id IN (170, 200, 230)
+  AND time BETWEEN '2022-08-25'  AND '2022-09-05'
+ORDER BY
+  order_id DESC;
+  -----------------------------------------------------------
+SELECT
+  birth_date,
+  courier_id,
+  sex
+FROM
+  couriers
+WHERE
+  birth_date IS NULL
+ORDER BY
+  courier_id;
+  -----------------------------------------------------------
+SELECT
+  user_id,
+  birth_date
+FROM
+  users
+WHERE
+  birth_date IS NOT NULL
+  AND sex = 'male'
+ORDER BY
+  birth_date DESC
+LIMIT
+  50;
+  -----------------------------------------------------------
+SELECT
+  order_id,
+  time
+FROM
+  courier_actions
+WHERE
+  courier_id = 100
+  AND action = 'deliver_order'
+ORDER BY
+  time DESC
+LIMIT
+  10;
+  -----------------------------------------------------------
+SELECT
+  order_id
+FROM
+  user_actions 
+WHERE
+  time BETWEEN '2022-08-01' AND '2022-09-01'
+  AND action = 'create_order'
+ORDER BY
+  order_id;
+  -----------------------------------------------------------
+SELECT
+  courier_id
+FROM
+  couriers  
+WHERE
+  birth_date BETWEEN '1990-01-01' AND '1996-01-01'
+ORDER BY
+  courier_id;
+  -----------------------------------------------------------
+SELECT
+  user_id,
+  order_id,
+  action,
+  time
+FROM
+  user_actions
+WHERE
+  action = 'cancel_order'
+  AND time BETWEEN '2022-08-01'  AND '2022-09-01'
+  AND EXTRACT(DOW FROM time) = 3
+  AND DATE_PART('hour', time) BETWEEN '12' AND '15'
+ORDER BY
+  order_id DESC;
+  -----------------------------------------------------------
+SELECT
+  product_id,
+  name,
+  price,
+  CASE
+    WHEN name IN ('сахар', 'сухарики', 'сушки', 'семечки') THEN ROUND(price/1.1*0.1, 2)
+    ELSE ROUND(price/1.2*0.2, 2)
+  END AS tax,
+  CASE
+    WHEN name IN ('сахар', 'сухарики', 'сушки', 'семечки') THEN ROUND(price-price/1.1*0.1, 2)
+    ELSE ROUND(price-price/1.2*0.2, 2)
+  END AS price_before_tax
+FROM
+  products 
+ORDER BY
+  price_before_tax DESC,
+  product_id;
+  -----------------------------------------------------------

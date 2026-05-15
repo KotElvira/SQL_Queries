@@ -1,0 +1,30 @@
+SELECT MAX(price) AS max_price,
+       MIN(price) AS min_price
+FROM products;
+-----------------------------------------------------------
+SELECT
+  COUNT(*) AS dates,
+  COUNT(birth_date) AS dates_not_null
+FROM
+  users;
+-----------------------------------------------------------
+SELECT
+  COUNT(courier_id) AS couriers
+FROM
+  couriers
+WHERE
+  sex = 'female';
+-----------------------------------------------------------
+SELECT
+  MIN(time) AS first_delivery,
+  MAX(time) AS last_delivery
+FROM
+  courier_actions
+WHERE action = 'deliver_order';
+-----------------------------------------------------------
+SELECT
+  SUM(price) AS order_price
+FROM
+  products
+WHERE name IN ('энергетический напиток', 'чипсы', 'сухарики')
+-----------------------------------------------------------

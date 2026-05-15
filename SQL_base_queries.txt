@@ -6,7 +6,7 @@ FROM
   products
 ORDER BY
   name;
-  -----------------------------------------------------------
+-----------------------------------------------------------
 SELECT
   name,
   price,
@@ -15,7 +15,7 @@ FROM
   products
 ORDER BY
   name;
- ----------------------------------------------------------- 
+----------------------------------------------------------- 
 SELECT 
   courier_id,
 DATE_PART('year', birth_date) AS birth_year
@@ -24,7 +24,7 @@ FROM
 ORDER BY 
   birth_year DESC, 
   courier_id;
- ----------------------------------------------------------- 
+----------------------------------------------------------- 
 SELECT 
   courier_id,
 COALESCE(DATE_PART('year', birth_date)::VARCHAR, 'unknown') AS birth_year
@@ -44,7 +44,7 @@ FROM
 ORDER BY
   new_price DESC,
   product_id;
-  -----------------------------------------------------------
+-----------------------------------------------------------
 SELECT
   product_id,
   name,
@@ -58,7 +58,7 @@ FROM
 ORDER BY
   new_price DESC,
   product_id;
-  -----------------------------------------------------------
+-----------------------------------------------------------
 SELECT
   product_id,
   name,
